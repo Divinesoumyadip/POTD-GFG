@@ -1,0 +1,22 @@
+class Solution{
+public:
+    vector<int> findTwoElement(vector<int> arr) {
+        int n = arr.size();
+        long long int sumofn = 0;
+        long long int sumofarr = 0;
+        long long int sumsqn = 0;
+        long long int sumsqarr = 0;
+        for(int i=0;i<n;i++){
+            sumofn += (long long)(i+1);
+            sumofarr += (long long)((long long)arr[i]);
+            sumsqn += (long long)((long long)(i+1)*(long long)(i+1));
+            sumsqarr += (long long)((long long)arr[i]*(long long)arr[i]);
+        }
+        long long int val1 = sumofarr - sumofn;
+        long long int val2 = sumsqarr - sumsqn;
+        val2 = val2 / val1;
+        long long int repeating = (val1+val2)/2;
+        long long int missing = repeating - val1;
+        return {(int)repeating,(int)missing};
+    }
+};
