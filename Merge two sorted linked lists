@@ -1,0 +1,19 @@
+class Solution {
+  public:
+    Node* sortedMerge(Node* head1, Node* head2) {
+        Node* root=new Node(-1);
+        Node* ptr=root;
+        while(head1!=NULL && head2!=NULL){
+            if(head1->data>head2->data)
+            ptr->next=new Node(head2->data),ptr=ptr->next,head2=head2->next;
+            else
+            ptr->next=new Node(head1->data),ptr=ptr->next,head1=head1->next;
+        }
+        while(head1)
+        ptr->next=new Node(head1->data),ptr=ptr->next,head1=head1->next;
+        while(head2)
+        ptr->next=new Node(head2->data),ptr=ptr->next,head2=head2->next;
+        
+        return root->next;
+    }
+};
